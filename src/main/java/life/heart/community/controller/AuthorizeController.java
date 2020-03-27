@@ -48,7 +48,7 @@ public class AuthorizeController {
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         System.out.println(accessToken);
         GithubUser githubUser = githubProvider.getUser(accessToken);
-        if (githubUser != null) {
+        if (githubUser != null && githubUser.getId() != null) {
             //获取到githubuser的时候，将其存入数据库：也就是spring boot 整合mybatis
             User user = new User();
             String token = UUID.randomUUID().toString();
@@ -59,8 +59,8 @@ public class AuthorizeController {
             user.setGmtModified(user.getGmtCreate());
             userMapper.insert(user);
             //登陆成功，写cookie 和session
-            response.addCookie(new Cookie("token",token));
-            //request.getSession().setAttribute("user", githubUser);
+            response.addCookie(new Cookie("token", token));
+            request.getSession().setAttribute("user", githubUser);
             return "redirect:/";
         } else {
             return "redirect:/";

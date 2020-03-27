@@ -30,7 +30,7 @@ public class IndexController {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.equals("token")) {
+                if (cookie.getName().equals("token")) {
                     System.out.println("cookie is not null");
                     String token = cookie.getValue();
                     System.out.println("token = " + token);
