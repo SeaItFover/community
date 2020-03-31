@@ -2,6 +2,8 @@ package life.heart.community.service;
 
 import life.heart.community.dto.PaginationDTO;
 import life.heart.community.dto.QuestionDTO;
+import life.heart.community.exception.CustomizeErrorCode;
+import life.heart.community.exception.CustomizeException;
 import life.heart.community.mapper.QuestionMapper;
 import life.heart.community.mapper.UserMapper;
 import life.heart.community.model.Question;
@@ -29,7 +31,7 @@ public class QuestionService {
         PaginationDTO paginationDTO = new PaginationDTO();
         Integer totalPage;
 
-        Integer totalCount = (int)questionMapper.countByExample(new QuestionExample());
+        Integer totalCount = (int) questionMapper.countByExample(new QuestionExample());
 
         if (totalCount % size == 0) {
             totalPage = totalCount / size;
@@ -49,7 +51,7 @@ public class QuestionService {
 
         Integer offset = size * (page - 1);
 
-        if (offset < 0){
+        if (offset < 0) {
             offset = 1;
         }
 
@@ -77,7 +79,7 @@ public class QuestionService {
         QuestionExample questionExample = new QuestionExample();
         questionExample.createCriteria()
                 .andCreatorEqualTo(userId);
-        Integer totalCount = (int)questionMapper.countByExample(questionExample);
+        Integer totalCount = (int) questionMapper.countByExample(questionExample);
 
         if (totalCount % size == 0) {
             totalPage = totalCount / size;
@@ -94,7 +96,7 @@ public class QuestionService {
         }
         paginationDTO.setPagination(totalPage, page);
         Integer offset = size * (page - 1);
-        if (offset < 0){
+        if (offset < 0) {
             offset = 1;
         }
 
@@ -119,6 +121,9 @@ public class QuestionService {
 
     public QuestionDTO getById(Integer id) {
         Question question = questionMapper.selectByPrimaryKey(id);
+        if (question == null) {
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+        }
         QuestionDTO questionDTO = new QuestionDTO();
         BeanUtils.copyProperties(question, questionDTO);
         User user = userMapper.selectByPrimaryKey(question.getCreator());
@@ -128,12 +133,12 @@ public class QuestionService {
 
     public void createOrUpdate(Question question) {
 
-        if (question.getId() == null){
+        if (question.getId() == null) {
 
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
             questionMapper.insert(question);
-        }else {
+        } else {
             Question updateQuestion = new Question();
             updateQuestion.setGmtModified(System.currentTimeMillis());
             updateQuestion.setTitle(question.getTitle());
@@ -142,7 +147,10 @@ public class QuestionService {
             QuestionExample example = new QuestionExample();
             example.createCriteria()
                     .andCreatorEqualTo(question.getId());
-            questionMapper.updateByExampleSelective(updateQuestion, example);
+            int updated = questionMapper.updateByExampleSelective(updateQuestion, example);
+            if (updated != 1){
+                throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+            }
         }
     }
 }
