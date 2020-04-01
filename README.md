@@ -1,12 +1,13 @@
-## 心之所向
+# Heart Community 
 
-### 学习Spring Boot
+## common link
 [Spring](spring.io)
 
-```java
-public class Test{
-    public static void main(String[] args){
-        System.out.println("学习使用MarkDown！");
-    }
-}
+```jshelllanguage
+operate mybatis generator:
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
+
+update or overwirte:
+mvn flyway:migrate
 ```
+

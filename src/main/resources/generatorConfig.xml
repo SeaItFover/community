@@ -40,5 +40,10 @@
             <property name="enableUpdateByPrimaryKey" value="true"/>
             <property name="enableDeleteByPrimaryKey" value="true"/>
         </table>
+        <table schema="community" tableName="comment" domainObjectName="Comment" >
+            <property name="enableSelectByPrimary" value="true"/>
+            <property name="enableUpdateByPrimaryKey" value="true"/>
+            <property name="enableDeleteByPrimaryKey" value="true"/>
+        </table>
     </context>
 </generatorConfiguration>

@@ -1,0 +1,35 @@
+    1  git status
+    2  git add .
+    3  git status
+    4  git commit -m "all"
+    5  git config --global user.email "you@example.com"
+    6   git config --global user.name "Your Name"
+    7  git commit -m "all"
+    8  git push
+    9  git pull
+   10  git push
+   11  git status
+   12  git add .
+   13  git commit -m "d"
+   14  git push
+   15  sqlite3 D:\电脑常用软件\QQ\Files\1169530462\FileRecv\code2020\db\code2020.db
+   16  sqlite3 D:\电脑常用软件\QQ\Files\1169530462\FileRecv\code2020\db\code2020.db
+   17  sqlite3 D:\电脑常用软件\QQ\Files\1169530462\FileRecv\code2020\db\code2020.db
+   18  javap
+   19  javap
+   20  javap
+   21  javap -c 测试运行时常量池.class 
+   22  javap -c 测试运行时常量池.class > aaa.txt
+   23  javap
+   24  javap -p -v Demo02.class > a.txt
+   25  javap -c -v Demo02.class > a.txt
+   26  ssh-keygen -t rsa -b 4096 -C "3140678431@qq.com"
+   27  eval $(ssh-agent -s)
+   28  ssh -add ~/.ssh/id_rsa
+   29  clip < ~/.ssh/id_rsa.pub
+   30  git status
+   31  git add .
+   32  git commit -m "refresh count of read"
+   33  git push
+   34  mvn flyway:migrate
+   35  history > D:\Desktop\a.txt
