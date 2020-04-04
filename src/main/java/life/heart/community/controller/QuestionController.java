@@ -1,8 +1,8 @@
 package life.heart.community.controller;
 
-import life.heart.community.dto.CommentCreateDTO;
 import life.heart.community.dto.CommentDTO;
 import life.heart.community.dto.QuestionDTO;
+import life.heart.community.enums.CommentTypeEnum;
 import life.heart.community.service.CommentService;
 import life.heart.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class QuestionController {
     @GetMapping("/question/{id}")
     public String question(@PathVariable(name = "id") Long id,Model model) {
         QuestionDTO questionDTO = questionService.getById(id);
-        List<CommentDTO> comments = commentService.listByQuestionId(id);
+        List<CommentDTO> comments = commentService.listByTargetId(id, CommentTypeEnum.QUESTION);
         //累加阅读数
         questionService.incView(id);
         model.addAttribute("question",questionDTO);
