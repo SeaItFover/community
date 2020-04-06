@@ -35,8 +35,36 @@ body {
     margin-top: 25px;
 }
 
+.question-tag {
+    margin-right: 5px;
+}
+
+.question-related {
+    line-height: 20px;
+    font-size: 12px;
+    list-style: none;
+    padding-left: 0;
+}
+
+.question-img {
+    width: 100%;
+}
+
+.publish-tag-tab {
+    display: none;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+
+
+.publish-tag-tab .label-info {
+    margin: 5px 5px;
+    white-space: normal;
+    display: inline-block;
+}
+
 .community-menu {
-    display: block;
     color: #999;
     font-size: 13px;
     margin-bottom: 15px;
@@ -86,6 +114,15 @@ body {
     margin-right: 6px;
     font-size: 15px;
     cursor: pointer;
+}
+
+.menu .comment-icon {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.menu .comment-icon :hover {
+    color: #499ef3;
 }
 
 .menu .active {

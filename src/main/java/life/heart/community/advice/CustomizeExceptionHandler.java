@@ -25,7 +25,7 @@ public class CustomizeExceptionHandler {
             if (e instanceof CustomizeException) {
                 resultDTO = ResultDTO.errorOf((CustomizeException) e);
             } else {
-                resultDTO = ResultDTO.errorOf(CustomizeErrorCode.SYSTEM_ERROR);
+                resultDTO = ResultDTO.errorOf(CustomizeErrorCode.SYS_ERROR);
             }
 
             try {
@@ -44,7 +44,7 @@ public class CustomizeExceptionHandler {
             if (e instanceof CustomizeException) {
                 model.addAttribute("message", e.getMessage());
             } else {
-                model.addAttribute("message", CustomizeErrorCode.SYSTEM_ERROR.getMessage());
+                model.addAttribute("message", CustomizeErrorCode.SYS_ERROR.getMessage());
             }
             return new ModelAndView("error");
         }

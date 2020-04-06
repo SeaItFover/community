@@ -1,6 +1,6 @@
-    1  git status
+    1  git type
     2  git add .
-    3  git status
+    3  git type
     4  git commit -m "all"
     5  git config --global user.email "you@example.com"
     6   git config --global user.name "Your Name"
@@ -8,7 +8,7 @@
     8  git push
     9  git pull
    10  git push
-   11  git status
+   11  git type
    12  git add .
    13  git commit -m "d"
    14  git push
@@ -27,7 +27,7 @@
    27  eval $(ssh-agent -s)
    28  ssh -add ~/.ssh/id_rsa
    29  clip < ~/.ssh/id_rsa.pub
-   30  git status
+   30  git type
    31  git add .
    32  git commit -m "refresh count of read"
    33  git push
